@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  </head>
+  <body>
+   
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        class FlavorForm extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {value: 'coconut'};//此处为设置初始默认值
+
+            this.handleChange = this.handleChange.bind(this);
+            this.handleSubmit = this.handleSubmit.bind(this);
+        }
+
+        handleChange(event) {
+            this.setState({value: event.target.value});
+        }
+
+        handleSubmit(event) {
+            alert('Your favorite flavor is: ' + this.state.value);
+            event.preventDefault();
+        }
+
+        render() {
+            return (
+            <form onSubmit={this.handleSubmit}>
+                <label>
+                Pick your favorite flavor:
+                <select value={this.state.value} onChange={this.handleChange}>
+                    <option value="grapefruit">Grapefruit</option>
+                    <option value="lime">Lime</option>
+                    <option value="coconut">Coconut</option>
+                    <option value="mango">Mango</option>
+                </select>
+                </label>
+                <input type="submit" value="Submit" />
+            </form>
+            );
+        }
+        }
+
+        ReactDOM.render(
+        <FlavorForm />,
+        document.getElementById('root')
+        );
+    </script>
+  </body>
+</html>
