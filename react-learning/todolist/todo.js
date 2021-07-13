@@ -1,6 +1,5 @@
 /*
 Todo app structure
-
 TodoApp
 	- TodoHeader
 	- TodoList
