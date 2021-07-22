@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind绑定props</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <my-component message="[1,2,3]"></my-component>
+        
+        <my-component :message="[1,2,3]"></my-component>
+    </div>
+    <script>//第一个结果是7，第二个结果是3，因为如果没有v-bind，那么传入的就是整个字符串
+        Vue.component('my-component',{
+            props:['message'],
+            template:'<div>{{message.length}}</div>'
+        });
+        var app=new Vue({
+            el:'#app'
+        })
+    </script>
+</body>
+</html>
