@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+   <div id="app">
+     <p>方法：{{currentTime1()}}</p>
+     <p>属性：{{currentTime2}}</p>
+   </div> 
+   <script>
+       var vue = new Vue({
+           el:"#app",
+           data:{
+            message:'刷新'
+           },
+           methods:{
+               currentTime1:function(){
+                   return Date.now()
+               }
+           },
+           //可以打开控制台查看，computed中的时间不刷新，但是如果在控制台刷新message，再执行，computed中的时间被刷新，但也只是被刷新一次，可以理解成缓存
+           computed:{
+               currentTime2:function(){
+                   
+                return Date.now()
+               }
+           } 
+
+       })
+   </script>
+</body>
+</html>
